@@ -71,6 +71,7 @@ function generatePassword() {
   Object.keys(charTypes).map((key) => {
     if (charTypes[key]) isValid = true;
   });
+
   if (!isValid) {
     alert('Must Have at least one Character Type confirmed');
     generatePassword();
@@ -80,40 +81,21 @@ function generatePassword() {
     let string = '';
 
     if (charTypes.lowercase) {
-      const incrementor = Math.ceil(Math.random() * 3);
-
-      for (
-        let i = 'a'.charCodeAt(0);
-        i <= 'z'.charCodeAt(0);
-        i += incrementor
-      ) {
-        string += String.fromCharCode(i);
-      }
+      string += addCharacters('a', 'z', true);
     }
     if (charTypes.uppercase) {
-      const incrementor = Math.ceil(Math.random() * 3);
-
-      for (
-        let i = 'A'.charCodeAt(0);
-        i <= 'Z'.charCodeAt(0);
-        i += incrementor
-      ) {
-        string += String.fromCharCode(i);
-      }
+      string += addCharacters('A', 'Z', true);
     }
     if (charTypes.numeric) {
-      const incrementor = Math.ceil(Math.random() * 3);
-
-      for (let i = 0; i <= 9; i += incrementor) {
-        string += i;
-      }
+      string += addCharacters(0, 9);
     }
     if (charTypes.specialChars) {
-      const incrementor = Math.ceil(Math.random() * 3);
-
-      for (let i = 0; i <= SPECIAL_CHARS.length; i += incrementor) {
-        string += SPECIAL_CHARS[i];
-      }
+      string += addCharacters(
+        0,
+        SPECIAL_CHARS.length - 1,
+        false,
+        SPECIAL_CHARS,
+      );
     }
     return string;
   }
