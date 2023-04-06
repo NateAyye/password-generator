@@ -5,17 +5,26 @@ const MAX = 128;
 
 // Assignment Code
 var generateBtn = document.querySelector('#generate');
+var clipboardBtn = document.querySelector('#clipboard');
+var passwordText = document.querySelector('#password');
+
+// Function for copying the password to the clipboard
+function copyToClipboard() {
+  navigator.clipboard.writeText(passwordText.value);
+  alert(`${passwordText.value} Copied to Clipboard!`);
+}
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+// Add event listener to copy to clipboard button
+clipboardBtn.addEventListener('click', copyToClipboard);
 
 // A Shuffle function that I grabbed off of stack overflow for shuffling strings
 // https://stackoverflow.com/questions/3943772/how-do-i-shuffle-the-characters-in-a-string-in-javascript
