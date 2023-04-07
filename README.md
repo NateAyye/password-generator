@@ -2,6 +2,8 @@
 
 ## Description
 
+[Visit The Live Site Here!!](https://nateayye.github.io/password-generator/)
+
 A simple web app for generating a password of your chosen length and contents.
 
 Character Options:
